@@ -1,0 +1,133 @@
+1. vue cli 설치
+   vscode - visual studio code
+	- vue 확장팩
+		vetur
+		Prettier - Code formatter 
+		
+	- Vue CLI 설치
+	npm install -g @vue/cli
+	
+	- Vue 프로젝트 생성 
+	vue create 프로젝트명
+	
+	- 배포
+	npm run build -> 작업 결과물 -> dist/index.html, css, js 
+	
+	SPA(Single Page Application)
+	
+	프론트앤드 개발 - 백앤드 개발
+	
+	- Vue Router
+	vue add router
+	- router - 라우팅 링크관련 설정
+	- views  - 페이지 컴포넌트
+	
+	vue ui 
+	
+	
+	import 변수명 from 모듈 경로;
+	const 변수명 = require('경로')
+	
+	export default 
+	module.exports 
+	
+	컴포넌트의 기본구조
+	<template>
+		출력되는 영역
+	</template>
+	<script>
+		export default{
+			name : "", //컴포넌트 이름(선택 사항)
+			components : {}, 다른 컴포넌트를 불러와서 사용할때
+			data(){
+				return {
+					속성 : 값, ... -> 출력 영역 데이터 바인딩 값 {{ 속성 }}
+				};
+			},
+			setup() {}, // 컴포지션 API
+			created() {}, // 컴포넌트가 생성되었을때 호출되는 메소드(출력 X)
+			mounted() {}, // 컴포넌트가 HTML로 출력 되었을때 호출되는 메소드
+			unmounted() {}, // 링크가 이동 했을때 호출되는 메소드
+			methods : {} // 컴포넌트 내에서 사용할 메소드
+		}
+	</script>
+	
+	바인딩 - 기본 텍스트
+	
+	v-html -> HTML 태그를 출력하는 바인딩 
+	
+	Form 데이터
+	v-model 
+		<input type = 'text' value='...'> - v-model -> value 속성을 바인딩
+		<input type = 'radio' value='1' checked>
+		<input type = 'checkbox' ...			-> v-model -> checked 속성을 바인딩
+																		 -> check 된 항목을 배열
+																		객체로 담는 역할
+				
+		<textarea>내용...</textarea> -> 오류 -> v-model -> value 속성에 바인딩
+		<textarea v-model='변수명'></textarea>
+		
+		select -> v-model -> value 속성을 바인딩
+	v-bind -> 속성의 값 바인딩
+	v-bind:속성 == :속성 
+	
+	<input type ='text' readonly disabled>
+	
+	v-bind:class - 바인드 -> 클래스가 추가가
+					= "{ '추가될 클래스' : 변수가 true, ... }
+	
+	v-bind:class="[클래스1, 클래스2, ...]"
+	
+	v-bind:style="객체"
+		{ 속성 : 값 }, { color:red } -> style="color:red"
+	v-bind:style="[변수 ,변수..]"
+	
+	
+	{{ 변수 }}
+	v-html
+	
+	속성과 관련되어 있는 바인딩디렉티브
+	v-model - form의 입력 태그(value, checked - 태그의 속성에 맞게 바인딩 속성을 결정)
+	v-bind - 일반 속성 전부를 바인딩 할 수 있다	
+				(v-bind: 속성 -> :속성)
+	
+	v-bind:class -> 클래스 관련 바인드
+			v-bind:class="{'추가 클래스명' : 추가 클래스가 추가될 조건(ture) }"
+			v-bind:class="[클래스1, 클래스2, 클래스3 ...]" - 조건 없는 단순 추가
+		
+	v-bind:style -> 스타일 속성관련 바인드
+		v-bind:style="{ 속성 : 값, 속성 : 값 }"
+		v-bind:style="[속성변수1, 속성변수2 ...]"
+		
+리스트 렌터링(v-for) - 반복문
+
+	axios -> npm
+	-> 원격 데이터 요청(Http Request -> 응답 데이터)
+	
+	-> 원격 요청은 같은 도메인, 같은 포트, 같은 서버 -> 기본 설정
+	CORS Policy - Cross origin Resources Sharing - 기본 같은 도메인, 같은 포트, 같은 서버
+	-> 서버쪽 응답 헤더에서 자원 공유를 허용
+	Access-Control-Allow-Origin : 
+	
+조건문(v-if, v-show)
+v-if - 조건에 해당 되지 않는 요소는 삭제(전부 가져온 후 삭제 - 조금 더 느리다)
+v-show - 조건에 해당되지 않는 요소는 감춤 처리(display: none)
+
+이벤트 처리 (v-on) -> @(v-on:)
+	click - 가장 많이쓰는  @click 
+	change @change
+	keyup  @keyup 
+
+computed와 watch
+	-> 값의 상태 변화를 모니터링 동기화를 할때
+	
+	computed - 처음 랜더링 될때도 호출
+	
+	watch -> 값 각각의 상태를 모니터링
+			 -> 처음 렌더링 될때 호출 X, 갑이 변화가 있었을 때만 호출
+					
+바인딩 -> 문자
+v-model-value -> 문자 
+
+
+값 -> Number() -> 문자열 -> 숫자, Number() -> 숫자 -> 숫자
