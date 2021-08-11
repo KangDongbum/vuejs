@@ -1,0 +1,16 @@
+MIXIN -> 함수 라이브러리
+export default{
+	methods: {
+	
+	}
+}
+
+각 컴포넌트의 mixins : [ 변수 ...],
+
+전체 공유 mixin -> main.js에 app.mixin(mixin 변수)
+
+- 라이프사이클 훅
+
+mounted()
+unmounted()
+

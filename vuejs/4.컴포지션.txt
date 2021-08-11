@@ -1,0 +1,13 @@
+1. v-module
+
+1) reactive({
+	데이터
+}); -> 양방향 바인딩 지원
+(data() {})
+(methods)
+
+2) computed
+
+3) toRefs -> 외부 함수를 setup에서 사용 가능하게
+
+4) provide, inject
