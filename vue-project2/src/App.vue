@@ -9,6 +9,12 @@
     <router-link to="/checkbox2">Checkbox2</router-link> |
     <router-link to="/radiobox">RadioBox</router-link> |
     <router-link to="/button">Button</router-link> |
+    <router-link to="/key">Key</router-link> |
+    <router-link to="/computed">Computed</router-link> |
+    <router-link to="/watch">Watch</router-link> |
+    <router-link to="/nestedcomponent">NestedComponent</router-link> |
+    <router-link to="/parentcomponent">ParentComponent</router-link> |
+    <router-link to="/parentcomponent2">ParentComponent2</router-link> |
   </div>
   <router-view/>
 </template>

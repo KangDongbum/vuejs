@@ -6,6 +6,12 @@ import CheckBox from '../views/CheckBox'
 import CheckBox2 from '../views/CheckBox2'
 import RadioBox from '../views/RadioBox'
 import Button from '../views/Button'
+import Key from '../views/Key'
+import Computed from '../views/Computed'
+import Watch from '../views/Watch'
+import NestedComponent from '../views/NestedComponent'
+import ParentComponent from '../views/ParentComponent'
+import ParentComponent2 from '../views/ParentComponent2'
 
 const routes = [
   {
@@ -55,6 +61,36 @@ const routes = [
     path: '/button',
     name: '/Button',
     component: Button
+  },
+  {
+    path: '/key',
+    name: '/Key',
+    component: Key
+  },
+  {
+    path: '/computed',
+    name: '/Computed',
+    component: Computed
+  },
+  {
+    path: '/watch',
+    name: '/Watch',
+    component: Watch
+  },
+  {
+    path: '/nestedcomponent',
+    name: '/NestedComponent',
+    component : NestedComponent
+  },
+  {
+    path: '/parentcomponent',
+    name: '/ParentComponent',
+    component : ParentComponent
+  },
+  {
+    path: '/parentcomponent2',
+    name: '/ParentComponent2',
+    component : ParentComponent2
   }
 ]
 

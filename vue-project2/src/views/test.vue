@@ -1,16 +1,16 @@
 <template>
     <h1>Test 페이지...</h1>
-    <pageTitle />
-    <page-title />
+    <PageTitle2 />
+    <Page-title2 />
     <h1>{{ title }}</h1>
     <input type="text" v-model="title" /> <br>
     <button type="button" @click="msg();">클릭!</button>
 </template>
 <script>
-import pageTitle from "../components/pageTitle.vue"
+import PageTitle2 from "../components/pageTitle2.vue"
 export default{
     name : "컴포넌트의 이름(생략가능)",
-    components : {pageTitle},
+    components : {PageTitle2},
     data() {
         return {
             title : "제목이다"
