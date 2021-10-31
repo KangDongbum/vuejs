@@ -15,6 +15,7 @@
     <router-link to="/nestedcomponent">NestedComponent</router-link> |
     <router-link to="/parentcomponent">ParentComponent</router-link> |
     <router-link to="/parentcomponent2">ParentComponent2</router-link> |
+    <router-link to="/test2">Test2</router-link> |
   </div>
   <router-view/>
 </template>

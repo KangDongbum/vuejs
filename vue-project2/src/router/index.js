@@ -12,6 +12,7 @@ import Watch from '../views/Watch'
 import NestedComponent from '../views/NestedComponent'
 import ParentComponent from '../views/ParentComponent'
 import ParentComponent2 from '../views/ParentComponent2'
+import Test2 from '../views/CompositionAPI2'
 
 const routes = [
   {
@@ -91,6 +92,11 @@ const routes = [
     path: '/parentcomponent2',
     name: '/ParentComponent2',
     component : ParentComponent2
+  },
+  {
+    path: '/test2',
+    name: '/Test2',
+    component: Test2
   }
 ]
 
