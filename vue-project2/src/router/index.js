@@ -12,7 +12,7 @@ import Watch from '../views/Watch'
 import NestedComponent from '../views/NestedComponent'
 import ParentComponent from '../views/ParentComponent'
 import ParentComponent2 from '../views/ParentComponent2'
-import Test2 from '../views/CompositionAPI2'
+import Test2 from '../views/StoreAccess.vue'
 
 const routes = [
   {

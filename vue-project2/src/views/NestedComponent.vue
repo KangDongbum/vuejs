@@ -8,7 +8,7 @@
     <Props :blog="blog"/>
 </template>
 <script>
-import PageTitle from "../components/pageTitle.vue"
+import PageTitle from "../components/PageTitle.vue"
 import Calculator from '../components/Calc.vue'
 import Props from '../components/Props.vue'
 export default{

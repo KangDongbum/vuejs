@@ -1,20 +1,24 @@
 import axios from 'axios';
-const commonLib = {
-    methods : {
-        $sum(num1, num2) {
+const commonLib ={
+   methods :{
+        $sum(num1, num2){
             return num1 + num2;
         },
-        async $httpRequest(url, data, method) {
-            return await axios({
+        async $httpRequest(url, data,method){
+            method = method || "GET";
+            try{
+             const result = await axios({
                 method,
                 url,
                 data
             })
-            .catch((err) => {
+            return result.data;
+            } catch(err){
                 console.error(err);
-            });
+                return false;
+            }
         }
-    }
-};
+   } 
+}
 
 export default commonLib;
