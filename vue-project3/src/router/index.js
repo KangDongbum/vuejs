@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Test from '../views/DataBinding.vue'
+import Test from '../views/ComPositionAPI.vue'
 
 const routes = [
   {
