@@ -2,7 +2,7 @@
  * 회원 model
  * 
  */
-export default {
+ export default {
     data() {
         return {
             requestURL : this.$store.state.apiURL + "/member",
@@ -14,8 +14,8 @@ export default {
          * @param {*} data 
          */
         async $join(data) {
-            const result = await this.$request(this.requestURL, data, "POST");
-            console.log(result);
+            const result = await this.$request(this.requestURL,data, "POST");
+            return result;
         },
         /**
          * 회원정보 수정 
