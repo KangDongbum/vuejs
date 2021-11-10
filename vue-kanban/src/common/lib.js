@@ -1,82 +1,85 @@
-import axios from "axios";
+import axios from 'axios'
 
 export default {
     methods : {
-        async $request(url, data, method){
+        async $request(url, data, method) {
             method = method || "GET";
-            if (data && data instanceof FormData){
+            if (data && data instanceof FormData) {
                 data = this.$formDataToJson(data);
             }
-            try{
-            const result = await axios({
-                method,
-                url,
-                data,
-            });
-            return result.data;
-            } catch(err){
+            
+            if (this.$isLogin()) {
+                data.memNo = this.$getMember().memNo;
+            }
+            
+            try {
+                const result = await axios({
+                    method,
+                    url,
+                    data,
+                });
+                return result.data;
+            } catch (err) {
                 console.error(err);
                 return false;
             }
         },
         /**
-         * FormData 형식 데이터 -> json
+         * FormData 형식 데이터 -> json 
          * @param {*} data 
          */
-        $formDataToJson(data){
+        $formDataToJson(data) {
             const json = {};
-            for(let field of data.entries()){
+            for (let field of data.entries()) {
                 json[field[0]] = field[1];
             }
 
             return json;
         },
-        $showMessage(obj, message){
+        $showMessage(obj, message) {
             obj.message = message;
             const ref = obj.$refs.popup;
-            if(ref){
+            if(ref) {
                 ref.isHide = false;
             }
         },
         /**
-         * 로그인 회원 정보 유지
+         * 로그인 회원 정보 유지 
+         * 
          */
-        async $loginInit(){
-            if(this.$store.state.member){
+        async $loginInit() {
+            if (this.$store.state.member) {
                 return;
             }
 
-            // 회원 정보가 없는 경우만 서버에 정보 요청
+            // 회원 정보가 없는 경우만 서버에 정보 요청 
             const token = sessionStorage.getItem("sessionId");
+            if (!token) {
+                return;
+            }
+
             const apiURL = this.$store.state.apiURL + "/member";
-            const data = { mode: "get_member", token};
+            const data = { mode : "get_member", token };
             const result = await this.$request(apiURL, data, "POST");
-            if(result.success){
+            if (result.success) {
                 this.$store.commit('setMember', result.data);
-            }else{
-                if(token){ // 토큰이 있지만 회원정보가 X, 만료된 경우
-                    sessionStorage.removeItem('sessionId');
-                }
             }
         },
         /** 로그인 체크 */
-        $isLogin(){
+        $isLogin() {
             return this.$store.state.member?true:false;
         },
-
         /** 로그아웃 처리 */
-        $logOut(){
+        $logOut() {
             this.$store.commit('setMember', null);
             sessionStorage.removeItem('sessionId');
         },
-        
         /** 로그인 회원 정보 */
-        $getMember(){
+        $getMember() {
             return this.$store.state.member;
         },
-
         /** 세션 스토리지 sessionId */
-        $getToken(){
+        $getToken() {
             return sessionStorage.getItem("sessionId");
         }
     }

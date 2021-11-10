@@ -23,14 +23,14 @@
          */
         async $update(data) {
             const token = this.$getToken();
-            if(data instanceof FormData){
+            if (data instanceof FormData) {
                 data.append("token", token);
-            }else{
+            } else {
                 data.token = token;
             }
 
-            const result = await this.$request(this.apiURL, data, "POST");
-            console.log(result);
+            const result = await this.$request(this.requestURL, data, "POST");
+            return result;
         },
         /**
          * 로그인 
@@ -44,10 +44,9 @@
             }
 
             const result = await this.$request(this.requestURL, data, "POST");
-            if(result.success){ // 로그인 성공
+            if (result.success) { // 로그인 성공
                 /**
-                 *  토큰이 발급 -> 세션 스토리지 저장
-                 * 
+                 * 토큰이 발급 -> 세션 스토리지 저장 
                  */
                 sessionStorage.setItem('sessionId', result.data.token);
             }

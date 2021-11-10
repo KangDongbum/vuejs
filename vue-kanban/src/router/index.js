@@ -1,9 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Main from '../views/Main.vue'
 import Join from '../views/member/Join.vue'
+import MyInfo from '../views/member/MyInfo.vue'
 import Login from '../views/member/Login.vue'
 import Logout from '../views/member/Logout.vue'
-import MyInfo from '../views/member/MyInfo.vue'
+
+import KanbanMain from '../views/kanban/Main.vue'
+import KanbanAdd from '../views/kanban/Add.vue'
 
 const routes = [
   {
@@ -13,7 +16,7 @@ const routes = [
   },
   {
     path: '/join',
-    name: 'Member Join',
+    name : 'Member Join',
     component: Join
   },
   {
@@ -23,13 +26,23 @@ const routes = [
   },
   {
     path: '/logout',
-    name: 'Member Logout',
+    name: "Member Logout",
     component: Logout
   },
   {
     path: '/my_info',
-    name: 'Member MyInfo',
+    name: "Member MyInfo",
     component: MyInfo
+  },
+  {
+    path: '/kanban',
+    name: "Kanban Main",
+    component: KanbanMain
+  },
+  {
+    path: '/kanban/add',
+    name: "Kanban Add",
+    component: KanbanAdd
   }
 ]
 

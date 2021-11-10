@@ -48,17 +48,23 @@ export default {
             let result = {};
             if (this.mode == 'join') {  // 회원 가입 
                 result = await this.$join(formData);
-                if(result.success){
+                if (result.success) {
                     this.$router.push({ path : '/login'});
                 }
             } else { // 회원 정보 수정
-                this.$update(formData);
+                result = await this.$update(formData);
+                if (result.success) {
+                    const frm = this.$refs.frmMember;
+                    frm.memPw.value = "";
+                    frm.memPwRe.value = "";
+                }
             }
             if (result.message) {
-               this.showMessage(result.message);
+                this.showMessage(result.message);
+                
             }
         },
-        showMessage(message){
+        showMessage(message) {
             this.$refs.message_popup.isHide = false;
             this.message = message;
         }
