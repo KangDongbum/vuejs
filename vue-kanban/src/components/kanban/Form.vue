@@ -34,14 +34,18 @@
         <input type="submit" value="작업등록" v-if="mode == 'add'">
         <input type="submit" value="작업수정" v-else>
     </form>
+    <MessagePopup ref='popup' :message="message" />
 </template>
 <script>
 import kanban from "../../models/kanban.js"
+import MessagePopup from '../../components/common/Message.vue'
 export default {
     mixins : [kanban],
+    components : { MessagePopup },
     data() {
         return {
             picked : "ready",
+            message : "",
         };
     },
     mounted() {
@@ -65,13 +69,17 @@ export default {
         }
     },
     methods : {
-        formSubmit(e) {
+        async formSubmit(e) {
             e.preventDefault();
            const formData = new FormData(this.$refs.frmKanban);
+           let result = {};
            if (this.mode == 'add') { // 작업 추가 
-                this.$addWork(formData);
+                result = await this.$addWork(formData);
            } else { // 작업 수정 
                 this.$editWork(formData);
+           }
+           if(result.message){
+               this.$showMessage(this, result.message);
            }
         }
     }
