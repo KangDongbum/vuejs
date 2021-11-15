@@ -11,16 +11,35 @@ export default {
            return result;
         },
         /** 작업 수정 */
-        $editWork(data) {
-            console.log(data);
+        async $editWork(data) {
+            const result = await this.$request(this.requestURL, data, "POST");
+            return result;
         },
         /** 작업 삭제 */
-        $deleteWork(idx) {
-            console.log(idx);
+       async $deleteWork(idx) {
+            const data = { mode : "delete", idx };
+            const result = await this.$request(this.requestURL, data, "POST");
+            return result;
         },
         /** 작업 목록  */
-        $getList(status) {
-            console.log(status);
+        async $getList(status) {
+            const data = { mode : "getList", status };
+            const result = await this.$request(this.requestURL, data, "POST");
+            const list = result.data || [];
+            return list;
+        },
+        /**
+         * 작업 내용 조회
+         * @param {*} idx 
+         */
+        async $get(idx) {
+            const data = {
+                mode : "get",
+                idx,
+            };
+            const result = await this.$request(this.requestURL, data, 
+                "POST");
+            return result;
         }
     }
 }
