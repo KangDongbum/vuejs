@@ -55,6 +55,10 @@ router.use(async (req, res) => {
 				break;
 			/** 작업 목록 */
 			case "getList":
+			if(!data.memNo){
+				throw new Error("회원전용 서비스 입니다.");
+			}
+			
 				const memNo = data.memNo || 0;
 				const status = data.status || "ready";
 				result = await kanban.getList(memNo, status);
@@ -79,6 +83,10 @@ router.use(async (req, res) => {
 				success = true;
 				returnData = result;
 				break;
+				default : 
+					if(data.origin != 'front'){
+						return res.redirect("/");
+				}
 		}
 	} catch(err) {
 		success = false;

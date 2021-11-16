@@ -1,5 +1,7 @@
+import CPS from 'vuex-persistedstate'
 import { createStore } from 'vuex'
 const store = createStore({
+    plugins : [ CPS() ],
     state(){
         return{
             apiURL : "http://localhost:3000",
